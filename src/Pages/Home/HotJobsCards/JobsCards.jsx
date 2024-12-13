@@ -16,7 +16,7 @@ const JobsCards = ({ job }) => {
         <img
           className='w-14'
       src={company_logo}
-      alt="Shoes" />
+      alt="company"/>
         </figure>
         <div>
           <h4 className="text-2xl">{company}</h4>
@@ -31,7 +31,7 @@ const JobsCards = ({ job }) => {
         <p>{description}</p>
         <div className='flex gap-2 flex-wrap items-center'>{requirements.map(skill =>
           <p key={skill._id} className='border-2 rounded-md  p-3 hover:bg-gray-200 hover:text-purple-600'>{skill}</p>)}</div>
-        <div></div>
+        {/* <div></div> */}
         
         <div className="card-actions justify-end">
           <p className='flex items-center gap-1 my-3'>Salary: <FaDollarSign /> {salaryRange.min}-{salaryRange.max} { salaryRange.currency}</p>
