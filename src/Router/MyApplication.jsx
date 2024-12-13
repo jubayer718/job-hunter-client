@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import AuthJobs from '../Components/AuthJobs';
 import Swal from 'sweetalert2';
+import Loading from '../Loading/Loading';
 
 const MyApplication = () => {
-  const { user } = AuthJobs();
+  const { user, loading } = AuthJobs();
+  if (loading) {
+    return <Loading></Loading>
+  }
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:3000/job_application?email=${user?.email}`)
