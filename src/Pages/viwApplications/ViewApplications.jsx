@@ -1,10 +1,30 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ViewApplications = () => {
   const applicationsData = useLoaderData();
   const handleChangeStatus = (e, id) => {
   console.log(e.target.value,id)
+    const statusData = { status: e.target.value };
+    fetch(`http://localhost:3000/job_application/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': "application/json"
+      },
+      body: JSON.stringify(statusData)
+    }).then(res => res.json()).then(data => {
+      console.log(data)
+      if (data.modifiedCount) {
+        Swal.fire({
+          title: 'status update successful',
+          position: 'top',
+          icon: 'success',
+          
+          
+        })
+      }
+    })
   
   }
   return (
