@@ -8,6 +8,7 @@ const Navbar = () => {
    <li><NavLink to='/'>Home</NavLink></li>
    <li><NavLink to='/myApplication'>My Application</NavLink></li>
    <li><NavLink to='/addNewJob'>Add NewJob</NavLink></li>
+   <li><NavLink to='/myPostedJob'>My posted job</NavLink></li>
        
     
   </>

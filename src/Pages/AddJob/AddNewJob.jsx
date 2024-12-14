@@ -1,7 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import AuthJobs from '../../Components/AuthJobs';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewJob = () => {
+  const { user } = AuthJobs();
+  const navigate = useNavigate();
   const handleAddJob = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
@@ -26,6 +30,7 @@ const AddNewJob = () => {
       if (data.insertedId) {
         Swal.fire('job added successfully')
       }
+      navigate('/myPostedJob')
     })
   }
   return (
@@ -49,8 +54,8 @@ const AddNewJob = () => {
           <label className="label">
             <span className="label-text">Job type</span>
           </label>
-         <select name='type' className="select select-ghost w-full max-w-xs">
-  <option disabled selected>Pick a job type</option>
+         <select defaultValue='Pick a job type' name='type' className="select select-ghost w-full max-w-xs">
+  <option disabled >Pick a job type</option>
   <option>Full Time</option>
   <option>Day shift</option>
   <option>Night shift</option>
@@ -62,8 +67,8 @@ const AddNewJob = () => {
           <label className="label">
             <span className="label-text">Job Field</span>
           </label>
-         <select name='jobfield' className="select select-ghost w-full max-w-xs">
-  <option disabled selected>Pick a job field</option>
+         <select defaultValue='Pick a job field' name='jobfield' className="select select-ghost w-full max-w-xs">
+  <option disabled >Pick a job field</option>
   <option>Engineering</option>
   <option>Marketing</option>
   <option>Freelancing</option>
@@ -100,8 +105,8 @@ const AddNewJob = () => {
        
      <div className="form-control">
         
-         <select name='currency' className="select select-ghost w-full max-w-xs">
-  <option disabled selected>Pick up a currency </option>
+         <select defaultValue='Pick up a currency' name='currency' className="select select-ghost w-full max-w-xs">
+  <option disabled >Pick up a currency </option>
   <option>BDT</option>
   <option>USD</option>
   <option>INR</option>
@@ -143,7 +148,15 @@ const AddNewJob = () => {
           <label className="label">
             <span className="label-text">HR Email</span>
           </label>
-          <input type="text" name='hrEmail' placeholder="HR Email" className="input input-bordered" required />
+          <input defaultValue={user?.email} type="text" name='hr_email' placeholder="HR Email" className="input input-bordered" required />
+         
+        </div>
+        {/* applicationDeadline */}
+          <div className="form-control">
+          <label className="label">
+            <span className="label-text">applicationDeadline</span>
+          </label>
+          <input type="date" name='applicationDeadline' placeholder="applicationDeadline" className="input input-bordered" required />
          
         </div>
 
