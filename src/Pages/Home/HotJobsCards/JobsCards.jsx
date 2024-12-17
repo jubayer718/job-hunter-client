@@ -5,7 +5,7 @@ import { IoMdTime } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 const JobsCards = ({ job }) => {
-  console.log(job)
+  // console.log(job)
 
 
   const { _id, requirements, company, description, salaryRange, location, title,company_logo, applicationDeadline:deadline } =job
